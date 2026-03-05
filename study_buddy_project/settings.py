@@ -98,8 +98,10 @@ WSGI_APPLICATION = 'study_buddy_project.wsgi.application'
 
 # Database
 # Use Vercel Postgres if available, otherwise fallback to SQLite
+import os
 DATABASES = {
     'default': dj_database_url.config(
+        env='POSTGRES_URL',
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600
     )
